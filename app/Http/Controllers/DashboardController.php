@@ -6,6 +6,7 @@ use App\Models\BukuTamu;
 use App\Models\TamuUndangan;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class DashboardController extends Controller
@@ -34,6 +35,19 @@ class DashboardController extends Controller
             'title' => "Make User",
             'active' => 'makeUser'
         ]);
+    }
+
+    public function makeUserPost(Request $request) {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+            'role' => 'required'
+        ]);
+
+        $validatedData['password'] = Hash::make($validatedData['password']); 
+        User::create($validatedData);
+        return back()->with('successPost', "User Berhasil DI Buat");
     }
 
 }
