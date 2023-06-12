@@ -7,7 +7,6 @@ use App\Models\TamuUndangan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class DashboardController extends Controller
 {
@@ -33,8 +32,9 @@ class DashboardController extends Controller
     public function makeUser() {
         return view('dashboard.superadmin.makeuser', [
             'title' => "Make User",
-            'active' => 'makeUser'
-        ]);
+            'active' => 'makeUser',
+            'users' => User::all()
+        ])->with('i');
     }
 
     public function makeUserPost(Request $request) {
@@ -48,6 +48,12 @@ class DashboardController extends Controller
         $validatedData['password'] = Hash::make($validatedData['password']); 
         User::create($validatedData);
         return back()->with('successPost', "User Berhasil DI Buat");
+    }
+
+    public function makeUserEdit(Request $request, User $User) {
+        $validatedData = $request->validate(['role' => 'required']);
+        $User->update($validatedData);
+        return back()->with('successEdit', "Data User Berhasil DI Update");
     }
 
 }
