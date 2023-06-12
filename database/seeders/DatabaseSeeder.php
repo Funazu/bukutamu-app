@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Setting::create([
+            'identity' => 'register',
             'nama_fitur' => "Registrasi User",
             'status' => 'enable'
         ]);

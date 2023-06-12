@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -25,15 +26,17 @@ class AuthController extends Controller
 
         $validatedData['password'] = Hash::make($validatedData['password']);
         $validatedData['role'] = "user";
-        
+
         User::create($validatedData);
         return redirect('/auth/login');
     }
 
     public function login() {
+        $satpamLiaa = DB::table('settings')->where('identity', 'register')->value('status');
         return view('auth.login', [
             'title' => "Login",
-            'active' => 'login'
+            'active' => 'login',
+            'register' => $satpamLiaa
         ]);
     }
 

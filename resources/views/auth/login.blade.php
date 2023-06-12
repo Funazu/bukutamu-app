@@ -46,7 +46,9 @@
                             <hr>
                             <div class="form-group">
                                 <button class="btn btn-primary">Kirim</button>
-                                <a href="/auth/register" type="button" class="btn btn-secondary">Register</a>
+                                @if($register == 'Enable')
+                                    <a href="/auth/register" type="button" class="btn btn-secondary">Register</a>
+                                @endif
                             </div>
                         </form>
                     </div>

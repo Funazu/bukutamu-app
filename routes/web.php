@@ -6,6 +6,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TamuController;
 use App\Http\Controllers\TamuUndanganController;
+
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,10 +25,16 @@ Route::get('/home', function() {
 });
 
 Route::get('/auth/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
-Route::get('/auth/register', [AuthController::class, 'register'])->middleware('guest');
-
-Route::post('/auth/register', [AuthController::class, 'registerPost']);
 Route::post('/auth/login', [AuthController::class, 'loginPost']);
+
+
+$satpamLiaa = DB::table('settings')->where('identity', 'register')->value('status');
+if($satpamLiaa == 'Enable') {
+    Route::get('/auth/register', [AuthController::class, 'register'])->middleware('guest');
+    Route::post('/auth/register', [AuthController::class, 'registerPost']);
+}
+
+
 Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::get('/auth/logout', [AuthController::class, 'logout'])->middleware('auth');
 
