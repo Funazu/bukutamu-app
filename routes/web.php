@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BukuTamuController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TamuController;
 use App\Http\Controllers\TamuUndanganController;
 use Illuminate\Support\Facades\Route;
@@ -61,7 +62,12 @@ Route::middleware('admin')->group(function () {
 });
 
 Route::middleware('superadmin')->group(function () {
+    // MakeUser
     Route::get('/dashboard/makeuser', [DashboardController::class, 'makeUser'])->name('makeUser');
     Route::post('/dashboard/makeuser/post', [DashboardController::class, 'makeUserPost']);
     Route::put('/dashboard/makeuser/edit/{User:id}', [DashboardController::class, 'makeUserEdit']);
+
+    // WebSetting
+    Route::get('/dashboard/setting', [SettingController::class, 'index'])->name('setting');
+    Route::put('/dashboard/setting/edit/{Setting:id}', [SettingController::class, 'settingEdit']);
 });

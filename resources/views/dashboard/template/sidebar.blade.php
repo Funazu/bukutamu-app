@@ -63,6 +63,15 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{ route('setting') }}" class="nav-link {{ ($active === 'setting') ? 'active': ''}}">
+              <i class="nav-icon fas fa-gear"></i>
+              <p>
+                Web Setting
+              </p>
+            </a>
+          </li>
+
           @endcan
 
         </ul>
