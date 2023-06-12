@@ -13,20 +13,22 @@ Aplikasi ini dibuat untuk memenuhi tugas akhir PKL di Telkom Kudus
 - Manajemen Undangan (ADMIN)
 - Scan QR Tamu Undangan (ADMIN)
 - LINK Undangan + QrCode
+- Management User (SUPERADMIN)
+- Web Setting (SUPERADMIN)
 
 
 ## Teknologi
 
 Teknologi yang dipakai BukuTamu-APP:
 
-- Laravel - Framework PHP
-- Bootstrap - Framework CSS
-- AdminLTE - Dashboard
-- JQuery - JavaScript Library
-- DataTables - Plugin JQuery Table
-- FontAwesome - Icon
-- html5-qrcode - QrScanner
-- Simple-QrCode - QrCode
+- [Laravel](https://laravel.com/) - Framework PHP
+- [Bootstrap](http://getbootstrap.com/) - Framework CSS
+- [AdminLTE](https://adminlte.io/) - Dashboard
+- [JQuery](https://jquery.com/) - JavaScript Library
+- [DataTables](https://datatables.net/) - Plugin JQuery Table
+- [FontAwesome](https://fontawesome.com/) - Icon
+- [html5-qrcode](https://github.com/mebjas/html5-qrcode) - QrScanner
+- [Simple-QrCode](https://github.com/SimpleSoftwareIO/simple-qrcode) - QrCode
 
 
 ## Instalasi
