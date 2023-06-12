@@ -24,6 +24,8 @@ class AuthController extends Controller
         ]);
 
         $validatedData['password'] = Hash::make($validatedData['password']);
+        $validatedData['role'] = "user";
+        
         User::create($validatedData);
         return redirect('/auth/login');
     }
