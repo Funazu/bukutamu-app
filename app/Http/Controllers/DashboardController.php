@@ -29,4 +29,11 @@ class DashboardController extends Controller
         ]);
     }
 
+    public function makeUser() {
+        return view('dashboard.superadmin.makeuser', [
+            'title' => "Make User",
+            'active' => 'makeUser'
+        ]);
+    }
+
 }

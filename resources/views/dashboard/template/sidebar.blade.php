@@ -22,7 +22,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
+          @can('admin')
           <li class="nav-header">Tamu</li>
           <li class="nav-item">
             <a href="{{ route('bukuTamu') }}" class="nav-link {{ ($active === 'bukuTamu') ? 'active': ''}}">
@@ -50,6 +50,20 @@
               </p>
             </a>
           </li>
+          @endcan
+
+          @can('superadmin')
+          <li class="nav-header">SuperAdmin</li>
+          <li class="nav-item">
+            <a href="{{ route('makeUser') }}" class="nav-link {{ ($active === 'makeUser') ? 'active': ''}}">
+              <i class="nav-icon fas fa-user-plus"></i>
+              <p>
+                Buat User Baru
+              </p>
+            </a>
+          </li>
+
+          @endcan
 
         </ul>
       </nav>

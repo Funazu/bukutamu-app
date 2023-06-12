@@ -61,5 +61,5 @@ Route::middleware('admin')->group(function () {
 });
 
 Route::middleware('superadmin')->group(function () {
-    Route::get('/dashboard/makeuser', [DashboardController::class, 'makeUser'])->name('superadmin');
+    Route::get('/dashboard/makeuser', [DashboardController::class, 'makeUser'])->name('makeUser');
 });
