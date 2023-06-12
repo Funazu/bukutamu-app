@@ -45,6 +45,7 @@ composer install
 Database:
 ```sh
 php artisan migrate
+php artisan db:seed
 ```
 
 ## Preview:
