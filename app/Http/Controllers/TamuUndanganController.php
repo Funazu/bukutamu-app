@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TamuUndangan;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\Http;
 
 class TamuUndanganController extends Controller
 {
@@ -70,7 +71,10 @@ class TamuUndanganController extends Controller
 
     public function scanBarcodePost(Request $request) {
         $uniqid = $request->uniqid;
-        TamuUndangan::where('uniqid', $uniqid)->update(['hadir' => 'true']);
+        $searchData = TamuUndangan::where('uniqid', $uniqid);
+        // TamuUndangan::where('uniqid', $uniqid)->update(['hadir' => 'true']);
+        $searchData->update(['hadir' => 'true']);
+        Http::get('https://bukutamu-tv.juliawulandari.site/api/v1/bukutamu?nama=' . $searchData->value('nama') . '');
         // Bisa di Implementasikan ke TV
         return back()->with('success', "Undangan Berhasil Datang");
     }
