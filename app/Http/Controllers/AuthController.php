@@ -32,11 +32,11 @@ class AuthController extends Controller
     }
 
     public function login() {
-        $satpamLiaa = DB::table('settings')->where('identity', 'register')->value('status');
+        // $satpamLiaa = DB::table('settings')->where('identity', 'register')->value('status');
         return view('auth.login', [
             'title' => "Login",
             'active' => 'login',
-            'register' => $satpamLiaa
+            // 'register' => $satpamLiaa
         ]);
     }
 

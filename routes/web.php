@@ -28,11 +28,13 @@ Route::get('/auth/login', [AuthController::class, 'login'])->name('login')->midd
 Route::post('/auth/login', [AuthController::class, 'loginPost']);
 
 
-$satpamLiaa = DB::table('settings')->where('identity', 'register')->value('status');
-if($satpamLiaa == 'Enable') {
-    Route::get('/auth/register', [AuthController::class, 'register'])->middleware('guest');
-    Route::post('/auth/register', [AuthController::class, 'registerPost']);
-}
+// $satpamLiaa = DB::table('settings')->where('identity', 'register')->value('status');
+
+Route::get('/auth/register', [AuthController::class, 'register'])->middleware('guest');
+Route::post('/auth/register', [AuthController::class, 'registerPost']);
+
+// if($satpamLiaa == 'Enable') {
+// }
 
 
 Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth');
